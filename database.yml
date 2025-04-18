@@ -1,0 +1,6 @@
+development:
+  adapter: postgresql
+  database: lit_books
+  host: localhost
+  username: root
+  encoding: utf8
