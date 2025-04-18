@@ -2,5 +2,5 @@ development:
   adapter: postgresql
   database: lit_books
   host: localhost
-  username: root
+  username: kurokawaryunosuke
   encoding: utf8
