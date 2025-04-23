@@ -1,3 +1,5 @@
+require 'sinatra/reloader'
+require "./models.rb"
 require 'sinatra/base'
 require 'sinatra/namespace'
 
@@ -9,11 +11,14 @@ class LiTBooks < Sinatra::Base
 
   namespace '/books' do
     get '/?' do
-      '書籍一覧'
+      @books = Book.all
+      @books = @books.order('created_at DESC')
+      @books = @books.limit(10)
+      erb :'books/index'
     end
 
     get '/new' do
-      '新規書籍登録'
+      erb :'books/new'
     end
 
     get '/:id' do
