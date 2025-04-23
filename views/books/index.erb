@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+  <h1>書籍一覧</h1>
+  <% if @books == nil %>
+    <p>書籍が登録されていません。</p>
+  <% else %>
+    <ul>
+      <% @books.each do |book| %>
+        <li>
+          <h2><%= book.title %></h2>
+          <p>著者: <%= book.author %></p>
+          <p>出版社: <%= book.publisher %></p>
+          <% if book.cover_image_url %>
+            <img src="<%= book.cover_image_url %>" alt="Cover Image">
+          <% end %>
+          <p>概要: <%= book.description %></p>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+  <button onclick="location.href='/books/new'">新規登録</button>
+  </body>
+</html>
