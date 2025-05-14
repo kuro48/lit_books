@@ -3,24 +3,36 @@
     <meta charset="UTF-8">
   </head>
   <body>
-  <h1>書籍一覧</h1>
-  <% if @books == nil %>
-    <p>書籍が登録されていません。</p>
-  <% else %>
-    <ul>
-      <% @books.each do |book| %>
-        <li>
-          <h2><%= book.title %></h2>
-          <p>著者: <%= book.author %></p>
-          <p>出版社: <%= book.publisher %></p>
-          <% if book.cover_image_url %>
-            <img src="<%= book.cover_image_url %>" alt="Cover Image">
-          <% end %>
-          <p>概要: <%= book.description %></p>
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
-  <button onclick="location.href='/books/new'">新規登録</button>
+    <h1>書籍一覧</h1>
+    <% if @books == nil %>
+      <p>書籍が登録されていません。</p>
+    <% else %>
+      <ul>
+        <% @books.each do |book| %>
+          <li>
+            <h2><%= book.title %></h2>
+            <p>著者: <%= book.author %></p>
+            <p>出版社: <%= book.publisher %></p>
+            <% if book.cover_image_url %>
+              <img src="<%= book.cover_image_url %>" alt="Cover Image">
+            <% end %>
+            <p>概要: <%= book.description %></p>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+    <button onclick="location.href='/books/new'">新規登録</button>
+    <form action="/api/v1/auth/signout" method="post" style="display: inline;">
+      <button type="submit">ログアウト</button>
+    </form>
+    <%if @user %>
+      <p>ようこそ、<%= @user.name %>さん！</p>
+      <p>あなたのメールアドレス: <%= @user.email %></p>
+      <p>あなたのユーザー名: <%= @user.user_name %></p>
+    <% else %>
+      <p>ログインしていません。</p>
+      <button onclick="location.href='/auth/signin'">ログイン</button>
+      <button onclick="location.href='/auth/signup'">新規登録</button>
+    <% end %>
   </body>
 </html>

@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+  <h1>LiTBooks!</h1>
+  <h2>書籍管理アプリ</h2>
+  <%if @user %>
+    <p>ようこそ、<%= @user.name %>さん！</p>
+    <p>あなたのメールアドレス: <%= @user.email %></p>
+    <p>あなたのユーザー名: <%= @user.user_name %></p>
+  <% else %>
+    <p>ログインしていません。</p>
+    <button onclick="location.href='/auth/signin'">ログイン</button>
+    <button onclick="location.href='/auth/signup'">新規登録</button>
+  <% end %>
+  </body>
+</html>

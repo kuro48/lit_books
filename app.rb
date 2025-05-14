@@ -6,7 +6,7 @@ require 'sinatra/namespace'
 class LiTBooks < Sinatra::Base
   register Sinatra::Namespace
   get '/' do
-  'LiT! Books!'
+    erb :home
   end
 
   namespace '/books' do
@@ -23,6 +23,16 @@ class LiTBooks < Sinatra::Base
 
     get '/:id' do
       '書籍詳細'
+    end
+  end
+
+  namespace '/auth' do
+    get '/signup' do
+      erb :'auth/signup'
+    end
+
+    get '/signin' do
+      erb :'auth/signin'
     end
   end
 

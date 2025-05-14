@@ -11,3 +11,4 @@ gem 'pg', '~> 1.3', '>= 1.3.3'
 gem 'rake'
 gem "rackup", "~> 2.2"
 gem "puma", "~> 6.6"
+gem "jwt"
